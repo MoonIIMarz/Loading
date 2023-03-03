@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/33d0b884fd.js" crossorigin="anonymous"></script>
+    <script src="calculate.js"></script>
+</head>
+<body onload="getData(); myLoading();">
+    <header>
+        <div class="home-container">
+            <nav>
+                <div class="nav-brand">
+                    <a href="home.html"><img src="small-logo-whiteBG.png" alt="" class="slogo-image"></a>
+                </div>
+                <div class="menu-icons open">
+                    <i class="fa-solid fa-bars" onclick="openNav()"></i>
+                </div>
+                <ul class="nav-list-other" id="open">
+                    <li class="menu-icons close">
+                        <i class="fa-solid fa-xmark" onclick="closeNav()"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="home.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="name.html" class="nav-link">Take The Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="personalities.html" class="nav-link">Personalities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ComingSoon.html" class="nav-link">People & Career</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.sorkon.co.th/" class="nav-link">S.Khonkaen</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-loading">
+        <img src="MT_loading_new.gif" alt="" id="loading"/>
+    </div>
+    <div class="loading-text">
+        <h1>เรากำลังปรุงอาหารให้คุณ</h1>
+        <h2>Cooking...</h2>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function openNav() {
+            const list = document.getElementById('open').classList;
+            list.add('active')
+        }
+
+        function closeNav() {
+            const list = document.getElementById('open').classList;
+            list.remove('active')
+        }
+
+        function getData() {
+            var vname = localStorage["name"];
+            var vage = localStorage["age"];
+            var vgender = localStorage["gender"];
+            
+            console.log(vname, vage, vgender);
+        };
+
+        var loadingTime
+
+        function myLoading() {
+            loadingTime = setTimeout(showPage, 6000);
+        }
+
+        var fun = parseInt(localStorage["A1"]);
+        var yummy = parseInt(localStorage["A2"]);
+        var s_heal = parseInt(localStorage["B1"]);
+        var heal = parseInt(localStorage["B2"]);
+        var flow = parseInt(localStorage["B3"]);
+        var thai_f = parseInt(localStorage["C1"]);
+        var authen = parseInt(localStorage["C2"]);
+        var social = parseInt(localStorage["C3"]);
+        var value = parseInt(localStorage["D1"]);
+        var sufficient = parseInt(localStorage["D2"]);
+        var moderate = parseInt(localStorage["E1"]);
+        var chill = parseInt(localStorage["E2"]);
+        var quick = parseInt(localStorage["E3"]);
+
+        const result = [fun, yummy, s_heal, heal, flow, thai_f, authen, social, value, sufficient, moderate, chill, quick];
+
+        var style = new Array();
+        style[0] = "Explorer for fun and social";
+        style[1] = "Explorer for yummy food";
+        style[2] = "Serious healthy maintainer";
+        style[3] = "Healthy conscious";
+        style[4] = "Go with the flow";
+        style[5] = "Thai food seeker";
+        style[6] = "Authentic seeker";
+        style[7] = "Social care";
+        style[8] = "Value seeker";
+        style[9] = "Sufficient consumimg";
+        style[10] = "Moderate";
+        style[11] = "Chill and convenience";
+        style[12] = "Quick and convenience";
+
+        var links = new Array();
+        links[0] = "social.aspx";
+        links[1] = "yummyfood.aspx";
+        links[2] = "serious_healthy.aspx";
+        links[3] = "healthy_conscious.aspx";
+        links[4] = "go_with_the_flow.aspx";
+        links[5] = "thaifood_seeker.aspx";
+        links[6] = "authentic_seeker.aspx";
+        links[7] = "social_care.aspx";
+        links[8] = "value_seeker.aspx";
+        links[9] = "sufficient.aspx";
+        links[10] = "moderate.aspx";
+        links[11] = "chill_convenience.aspx";
+        links[12] = "quick_convenience.aspx";
+
+        function showPage() {
+
+            var max = Math.max(...result);
+            var index = result.indexOf(max);
+            var you = style[index];
+            console.log(max, index, you);
+            localStorage["max"] = max;
+            localStorage["you"] = you;
+
+            //window.location.href = links[index];
+        }
+
+
+    </script>
+</body>
+</html>
